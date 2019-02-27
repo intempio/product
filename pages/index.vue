@@ -214,18 +214,21 @@ export default {
         window.alert("Error logging in");
       }
     },
-    actionDelete(product) {
+    async actionDelete(product) {
       try {
         let productData = product;
-        let data = {
-          product_id: productData.product_id
+        console.log(productData)
+        let data_delete = {
+          "product_id": productData.product_id
         };
-        let response = axios.post(
+        console.log(data_delete)
+        let response = axios.delete(
           "https://intempio-api-v3.herokuapp.com/api/v3/products/",
-          data
+          {data:data_delete}
         );
+        console.log(response)
       } catch (e) {
-        window.alert("Error logging in");
+        window.alert("Error logging in" + e);
       }
     },
     async submit() {
