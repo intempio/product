@@ -1,7 +1,7 @@
 {
-  "name": "person-list",
+  "name": "product-list",
   "version": "1.0.0",
-  "description": "List of Persons",
+  "description": "List of Products",
   "author": "Marra",
   "private": true,
   "scripts": {
