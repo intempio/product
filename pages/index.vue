@@ -102,7 +102,7 @@
               <b-button
                 v-b-modal.modalEdit
                 variant="primary"
-                @click="showModal(product)"
+                @click="showModal(client)"
               >
                 Client
               </b-button>
@@ -116,7 +116,7 @@
               <b-button
                 v-b-modal.modalEdit
                 variant="primary"
-                @click="showModal(product)"
+                @click="showModal(checklist)"
               >
                 Checklist
               </b-button>
@@ -193,6 +193,7 @@ export default {
       search: "",
       products: [],
       productData: {},
+      productModal: {},
       product_name: null,
       product_description: null,
       client_id: null,
@@ -214,19 +215,43 @@ export default {
         window.alert("Error logging in");
       }
     },
+    async addItem(field) {
+      const url = "https://intempio-api-v3.herokuapp.com/api/v3/producttags";
+      var data = {
+        product_id: this.product_id,
+        tag_type: this.tagType,
+        tag_name: this.selectedItem,
+        tag_value: this.InputTagName
+      };
+      let response = axios
+        .post(url, data, {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(response => {
+          this.fetchEventtag();
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+        .then(function() {
+          // always executed
+        });
+    },
     async actionDelete(product) {
       try {
         let productData = product;
-        console.log(productData)
+        console.log(productData);
         let data_delete = {
-          "product_id": productData.product_id
+          product_id: productData.product_id
         };
-        console.log(data_delete)
+        console.log(data_delete);
         let response = axios.delete(
           "https://intempio-api-v3.herokuapp.com/api/v3/products/",
-          {data:data_delete}
+          { data: data_delete }
         );
-        console.log(response)
+        console.log(response);
       } catch (e) {
         window.alert("Error logging in" + e);
       }
