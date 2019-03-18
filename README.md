@@ -1,10 +1,10 @@
-# person-list
+# product-list
 
-> List of Persons
+> List of Products
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install
 
