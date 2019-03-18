@@ -66,7 +66,6 @@
       >
         <thead>
           <tr>
-            <th>Prod ID</th>
             <th
               @click="sort('product_name')"
               style="cursor:pointer"
@@ -95,7 +94,6 @@
             v-for="product in filteredItems"
             v-bind:key="product"
           >
-            <td>{{product['product_id'] }}</td>
             <td class="prod_name"><img src="~/assets/edit.png">{{ product['product_name'] }}</td>
             <td>{{ product['product_description'] }}</td>
             <td>
